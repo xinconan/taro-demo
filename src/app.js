@@ -20,7 +20,7 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      'pages/tax/index'
     ],
     window: {
       backgroundTextStyle: 'light',

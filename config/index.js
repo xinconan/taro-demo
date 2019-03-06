@@ -1,3 +1,5 @@
+// const app = require('./baseConfig');
+
 const config = {
   projectName: 'taro-demo',
   date: '2019-1-2',
@@ -8,6 +10,7 @@ const config = {
     '828': 1.81 / 2
   },
   sourceRoot: 'src',
+  // outputRoot: `dist/${app.appId}`,
   outputRoot: 'dist',
   plugins: {
     babel: {
@@ -68,6 +71,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     module: {
       postcss: {
         autoprefixer: {
