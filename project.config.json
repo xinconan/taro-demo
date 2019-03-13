@@ -1,13 +1,33 @@
 {
-  "miniprogramRoot": "./dist",
-  "projectname": "taro-demo",
-  "description": "taro demo",
-  "appid": "touristappid",
+  "miniprogramRoot": "dist/",
+  "projectname": "测试小程序",
+  "description": "测试小程序",
+  "appid": "wx81273d0194eff645",
   "setting": {
     "urlCheck": true,
     "es6": false,
     "postcss": false,
-    "minified": false
+    "minified": false,
+    "newFeature": true
   },
-  "compileType": "miniprogram"
+  "compileType": "miniprogram",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {}
+  }
 }

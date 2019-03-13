@@ -70,6 +70,7 @@ class Index extends Component {
     const payFunds = parseInt(funds) * parseFloat(fundsRate) * 0.01
     const socialRate = (parseFloat(medicalRate) + parseFloat(oldRate) + parseFloat(hurtRate) + parseFloat(birthRate) + parseFloat(unemployRate)) * 0.01
     const paySocials = parseInt(socials) * socialRate
+    let taxPay = 0
 
     if (salary - free > 0) {
       // 预扣预缴
@@ -78,17 +79,30 @@ class Index extends Component {
       // 需要交税
       if (taxNum > 0) {
         if (taxNum < 36000) {
-          result = result - taxNum * 0.03
+          taxPay = taxNum * 0.03
         } else if (taxNum > 36000 && taxNum < 144000) {
           // 10% - 2520
-          result = result - taxNum * 0.1 - 2520;
+          taxPay = taxNum * 0.1 - 2520;
         }
+        result -= taxPay
       } 
     }
     this.setState({
-      result: result.toString(),
+      result: `税后：${result}
+      公积金：${payFunds}
+      社保：${paySocials}
+      纳税：${taxPay}
+      `,
       showModal: true
     })
+  }
+
+  onShareAppMessage() {
+    // 分享的回调
+    return {
+      title: '送你一款好用的个人所得税计算工具！',
+      path: '/pages/tax/index',
+    }
   }
 
   render () {
@@ -178,7 +192,7 @@ class Index extends Component {
         <AtButton type='primary' className='btn-calc' onClick={this.doCalc}>开始计算</AtButton>
         <AtModal
           isOpened={showModal}
-          title='预估到手'
+          title='结果'
           cancelText=''
           confirmText='确认'
           onConfirm={this.hideModal}
